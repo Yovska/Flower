@@ -1,0 +1,39 @@
+/*
+Humanoid insect pretending to be a flower
+by Yovska Moreno
+GDES-3015-001 Wearable Computing
+OCAD University 
+Created on April 11 2017
+based on Arduino Blink example
+https://www.arduino.cc/en/tutorial/blink
+Using a Pohotocell, by Lady Ada, https://learn.adafruit.com/photocells/using-a-photocell
+ */
+int photocellPin = 0;     // the cell and 10K pulldown are connected to a0
+int photocellReading;     // the analog reading from the sensor divider
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin 13 as an output.
+  pinMode(13, OUTPUT);
+  pinMode(8, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+ photocellReading = analogRead(photocellPin);  
+ 
+  Serial.print("Analog reading = ");
+  Serial.println(photocellReading);  
+  
+if (photocellReading < 500) {
+  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2500);              // wait for a second
+  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+  delay(500);              // wait for a second
+  digitalWrite(8, HIGH);
+  delay(2500);
+  digitalWrite(8, LOW);
+  delay(500);
+    Serial.println(" - light");
+}
+}
